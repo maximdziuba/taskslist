@@ -68,7 +68,7 @@ public class UserRepositoryImpl implements UserRepository {
             VALUES (?, ?, ?)""";
 
     private final String INSERT_USER_ROLE = """
-            INSERT INTO users_role (user_id, role)
+            INSERT INTO users_roles (user_id, role)
             VALUES (?, ?)""";
 
     private final String IS_TASK_OWNER = """
@@ -123,6 +123,7 @@ public class UserRepositoryImpl implements UserRepository {
             statement.setString(3, user.getPassword());
             statement.setLong(4, user.getId());
             statement.executeUpdate();
+
         } catch (SQLException e) {
             throw new ResourceMappingException("Exception while updating user");
         }
@@ -132,7 +133,7 @@ public class UserRepositoryImpl implements UserRepository {
     public void create(User user) {
         try {
             Connection connection = dataSourceConfig.getConnection();
-            PreparedStatement statement = connection.prepareStatement(CREATE);
+            PreparedStatement statement = connection.prepareStatement(CREATE, PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getName());
             statement.setString(2, user.getUsername());
             statement.setString(3, user.getPassword());
