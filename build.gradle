@@ -15,6 +15,8 @@ def lombokVersion = '1.18.26'
 def hibernateValidatorVersion = '8.0.0.Final'
 def jakartaVersion = '3.0.2'
 def postgresVersion = '42.6.0'
+def myBatisVersion = '3.0.1'
+def liquibaseVersion = '4.21.1'
 
 configurations {
     compileOnly {
@@ -26,8 +28,6 @@ repositories {
     mavenCentral()
 }
 
-// todo: versions in properties
-
 dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:' + springBootVersion
@@ -35,6 +35,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:' + springBootVersion
     implementation 'org.springframework.boot:spring-boot-starter-security:' + springBootVersion
     implementation 'org.springframework.boot:spring-boot-configuration-processor:' + springBootVersion
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:' + myBatisVersion
+    implementation 'org.liquibase:liquibase-core:' + liquibaseVersion
     implementation 'io.jsonwebtoken:jjwt-api:' + jjwtVersion
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:' + jjwtVersion
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:' + jjwtVersion

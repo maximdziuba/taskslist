@@ -7,16 +7,14 @@ import com.example.tasklist.repository.DataSourceConfig;
 import com.example.tasklist.repository.UserRepository;
 import com.example.tasklist.repository.mappers.UserRowMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-@Repository
+//@Repository
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
 

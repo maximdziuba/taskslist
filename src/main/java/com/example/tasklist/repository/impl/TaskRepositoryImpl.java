@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+//@Repository
 @RequiredArgsConstructor
 public class TaskRepositoryImpl implements TaskRepository {
 
@@ -25,7 +25,7 @@ public class TaskRepositoryImpl implements TaskRepository {
                    t.expiration_date as task_expiration_date,
                    t.status as task_status
             FROM tasks t
-            WHERE id = ?""";
+            WHERE t.id = ?""";
 
     private final String FIND_ALL_BY_USER_ID = """
             SELECT t.id as task_id,
@@ -153,7 +153,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     public void delete(Long id) {
         try {
             Connection connection = dataSourceConfig.getConnection();
-            PreparedStatement statement = connection.prepareStatement(CREATE, PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement(DELETE);
             statement.setLong(1,  id);
             statement.executeUpdate();
         } catch (SQLException exception) {
